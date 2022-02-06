@@ -1,0 +1,22 @@
+<resources>
+    <string name="app_name">TestApp</string>
+
+    <string name="dashboard_title">Dashboard</string>
+    <string name="add_user">Add User</string>
+    <string name="user_list">User List</string>
+    <string name="label_name">Name</string>
+    <string name="email">Email</string>
+    <string name="phone">Phone</string>
+    <string name="address">Address</string>
+    <string name="submit">Submit</string>
+    <string name="name_colon">Name:</string>
+    <string name="email_colon">Email:</string>
+    <string name="phone_colon">Phone:</string>
+    <string name="address_colon">Address:</string>
+
+
+    <string name="title">Success</string>
+    <string name="ok">OK</string>
+    <string name="supporting_text">User added successfully</string>
+    <string name="no_user_added">No User Added</string>
+</resources>

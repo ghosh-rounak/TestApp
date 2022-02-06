@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <variable
+            name="userItem"
+            type="com.rounak.testapp.data.db.entities.User" />
+    </data>
+
+<androidx.cardview.widget.CardView
+    android:id="@+id/rowUserLayout"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    >
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:paddingStart="@dimen/_15sdp"
+        android:paddingEnd="@dimen/_15sdp"
+        android:paddingBottom="@dimen/_20sdp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/tvName"
+            android:textStyle="bold"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:gravity="start"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:textSize="@dimen/_12ssp"
+            android:text="@string/name_colon"/>
+
+        <TextView
+            android:id="@+id/tvNameValue"
+            android:text="@{userItem.name}"
+            app:layout_constraintStart_toStartOf="@+id/tvName"
+            app:layout_constraintEnd_toEndOf="@+id/tvName"
+            app:layout_constraintTop_toBottomOf="@+id/tvName"
+            android:layout_marginTop="@dimen/_2sdp"
+            android:textSize="@dimen/_14ssp"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"/>
+
+
+        <TextView
+            android:id="@+id/tvEmail"
+            android:layout_marginTop="@dimen/_7sdp"
+            android:textStyle="bold"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:gravity="start"
+            app:layout_constraintStart_toStartOf="@+id/tvName"
+            app:layout_constraintEnd_toEndOf="@+id/tvName"
+            app:layout_constraintTop_toBottomOf="@+id/tvNameValue"
+            android:textSize="@dimen/_12ssp"
+            android:text="@string/email_colon"/>
+
+        <TextView
+            android:id="@+id/tvEmailValue"
+            android:text="@{userItem.email}"
+            app:layout_constraintStart_toStartOf="@+id/tvName"
+            app:layout_constraintEnd_toEndOf="@+id/tvName"
+            app:layout_constraintTop_toBottomOf="@+id/tvEmail"
+            android:layout_marginTop="@dimen/_2sdp"
+            android:textSize="@dimen/_14ssp"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"/>
+
+
+        <TextView
+            android:id="@+id/tvPhone"
+            android:layout_marginTop="@dimen/_7sdp"
+            android:textStyle="bold"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:gravity="start"
+            app:layout_constraintStart_toStartOf="@+id/tvName"
+            app:layout_constraintEnd_toEndOf="@+id/tvName"
+            app:layout_constraintTop_toBottomOf="@+id/tvEmailValue"
+            android:textSize="@dimen/_12ssp"
+            android:text="@string/phone_colon"/>
+
+        <TextView
+            android:id="@+id/tvPhoneValue"
+            android:text="@{userItem.phone}"
+            app:layout_constraintStart_toStartOf="@+id/tvName"
+            app:layout_constraintEnd_toEndOf="@+id/tvName"
+            app:layout_constraintTop_toBottomOf="@+id/tvPhone"
+            android:layout_marginTop="@dimen/_2sdp"
+            android:textSize="@dimen/_14ssp"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"/>
+
+
+        <TextView
+            android:id="@+id/tvAddress"
+            android:layout_marginTop="@dimen/_7sdp"
+            android:textStyle="bold"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:gravity="start"
+            app:layout_constraintStart_toStartOf="@+id/tvName"
+            app:layout_constraintEnd_toEndOf="@+id/tvName"
+            app:layout_constraintTop_toBottomOf="@+id/tvPhoneValue"
+            android:textSize="@dimen/_12ssp"
+            android:text="@string/address_colon"/>
+
+        <TextView
+            android:id="@+id/tvAddressValue"
+            android:text="@{userItem.address}"
+            android:textSize="@dimen/_14ssp"
+            app:layout_constraintStart_toStartOf="@+id/tvName"
+            app:layout_constraintEnd_toEndOf="@+id/tvName"
+            app:layout_constraintTop_toBottomOf="@+id/tvAddress"
+            android:layout_marginTop="@dimen/_2sdp"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+</androidx.cardview.widget.CardView>
+</layout>
