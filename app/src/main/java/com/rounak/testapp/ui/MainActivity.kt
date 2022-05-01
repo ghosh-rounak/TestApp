@@ -12,3 +12,11 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
     }
 }
+
+//validation functions for forms
+//dao functions
+//viewmodel validation function with live data
+// testing navigation of fragments on button clicks and corresponding back press navigation.
+// testing functionality (like popback on back press and and comparing a value set in viewmodel) on click of a recycler view item. Disable rv animation before this temporarily
+// testing total ui form functionality with espresso. Like testing of Add Item Form UI functionality along with local database.
+// Testing delete an item for UI recycler view list along with local db.

@@ -2,7 +2,6 @@ package com.rounak.testapp.ui.add_user
 
 import android.os.Bundle
 import android.util.Log
-import android.util.Patterns
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -14,6 +13,7 @@ import androidx.fragment.app.viewModels
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.rounak.testapp.R
 import com.rounak.testapp.databinding.FragmentAddUserBinding
+import com.rounak.testapp.utils.ValidateAddUserInputsUtil
 import com.rounak.testapp.utils.hideKeyboard
 import com.rounak.testapp.utils.toast
 import dagger.hilt.android.AndroidEntryPoint
@@ -143,9 +143,11 @@ class AddUserFragment : Fragment() {
         binding.etAddress.doAfterTextChanged {
             Log.d("onCreate", "setTextFieldChangeListeners: called")
             val address:String = it?.toString()?:""
-            if(address.length>40){
+            if(!ValidateAddUserInputsUtil.validateAddressLength(address)){
                 viewModel.updateAddressError("Max 40 characters allowed")
-            }else if(address.isNotBlank()){
+            }else if(!ValidateAddUserInputsUtil.validateAddress(address)){
+                viewModel.updateAddressError("Address can't be blank")
+            }else{
                 viewModel.updateAddressError("")
             }
         }
@@ -153,7 +155,7 @@ class AddUserFragment : Fragment() {
         binding.etName.doAfterTextChanged {
             if(!viewModel.valid){
                 val name:String = it?.toString()?:""
-                if(name.isNotBlank()){
+                if(ValidateAddUserInputsUtil.validateName(name)){
                     viewModel.updateNameError("")
                 }else{
                     viewModel.updateNameError("Name can't be blank")
@@ -165,7 +167,7 @@ class AddUserFragment : Fragment() {
             Log.d("onCreate", "setTextFieldChangeListeners: email changed")
             if(!viewModel.valid){
                 val email:String = it?.toString()?:""
-                if(viewModel.checkEmailValidity(email)){
+                if(ValidateAddUserInputsUtil.validateEmail(email)){
                     viewModel.updateEmailError("")
                 }else{
                     viewModel.updateEmailError("Invalid Email")
@@ -176,7 +178,7 @@ class AddUserFragment : Fragment() {
         binding.etPhone.doAfterTextChanged {
             if(!viewModel.valid){
                 val phone:String = it?.toString()?:""
-                if(phone.isNotBlank()){
+                if(ValidateAddUserInputsUtil.validatePhone(phone)){
                     viewModel.updatePhoneError("")
                 }else{
                     viewModel.updatePhoneError("Phone can't be blank")

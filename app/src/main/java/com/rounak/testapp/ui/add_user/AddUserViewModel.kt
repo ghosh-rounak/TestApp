@@ -1,7 +1,6 @@
 package com.rounak.testapp.ui.add_user
 
 import android.util.Log
-import android.util.Patterns
 import android.view.View
 import androidx.databinding.Bindable
 import androidx.databinding.Observable
@@ -12,6 +11,7 @@ import androidx.lifecycle.viewModelScope
 import com.rounak.testapp.data.db.entities.User
 import com.rounak.testapp.data.repository.AppRepository
 import com.rounak.testapp.utils.Event
+import com.rounak.testapp.utils.ValidateAddUserInputsUtil
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import javax.inject.Inject
@@ -119,34 +119,33 @@ class AddUserViewModel @Inject constructor(
 
         valid = true
 
-        if(name==null || name.isBlank()){
+        if(!ValidateAddUserInputsUtil.validateName(name)){
             uiNameErrorMsg.value = "Name can't be blank"
             valid = false
         }else{
             uiNameErrorMsg.value = ""
         }
 
-        if (email == null || email.isBlank() || !Patterns.EMAIL_ADDRESS.matcher(email)
-                .matches()
-        ) {
+        if(!ValidateAddUserInputsUtil.validateEmail(email)){
             uiEmailErrorMsg.value = "Invalid Email"
             valid = false
-        } else {
+        }else{
             uiEmailErrorMsg.value = ""
         }
 
-        if(phone == null || phone.isBlank()){
+        if(!ValidateAddUserInputsUtil.validatePhone(phone)){
             uiPhoneErrorMsg.value = "Phone can't be blank"
             valid = false
         }else{
             uiPhoneErrorMsg.value = ""
         }
 
-        if(address == null || address.isBlank()){
+        if(!ValidateAddUserInputsUtil.validateAddress(address)){
             uiAddressErrorMsg.value = "Address can't be blank"
             valid = false
-        }else if(address.isNotBlank()){
-            if(address.length>40){
+        }else{
+            //address not blank
+            if(!ValidateAddUserInputsUtil.validateAddressLength(address!!)){
                 uiAddressErrorMsg.value = "Max 40 characters allowed"
                 valid = false
             }else{
@@ -179,7 +178,7 @@ class AddUserViewModel @Inject constructor(
     }
 
 
-    val checkEmailValidity:(String) -> Boolean = { it.isNotBlank() && Patterns.EMAIL_ADDRESS.matcher(it).matches() }
+
 
 
     override fun addOnPropertyChangedCallback(callback: Observable.OnPropertyChangedCallback?) {
